@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+          crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <title>My Flask Blog</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <img class="img-bg" src="{{ url_for('static', filename='images/blog.png') }}" alt="Logo">
+
+</head>
+<body>
+
+                <div class="navbar">
+          <div>
+            <a href="{{ url_for('index') }}">Home</a>
+          </div>
+          <div class="navbar-heading">
+             <h1>Welcome to My Flask Blog!</h1>
+          </div>
+          <div>
+            <a href="{{ url_for('add') }}" >Add New Blog Post</a>
+          </div>
+        </div>
+
+    <!-- Flash Messages -->
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="flash-messages">
+            {% for message in messages %}
+                <div class="flash-message">
+                    <div class="flash-message-content">{{ message }}</div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+        {% for post in posts %}
+    <div class="post">
+        <div class="flex-container">
+            <div class="post-content">
+                <h2>{{ post['title'] }}</h2>
+                <p><em>Written by {{ post['author'] }}</em></p>
+                <p>{{ post['content'] }}</p>
+                 <div class="post-likes">
+                    <a href="/like/{{ post['id'] }}" class="like-link">
+                        <img src="{{ url_for('static', filename='images/like.png') }}" alt="Like Image">
+                    </a>
+                    <span>{{ post['likes'] }}</span> likes
+                </div>
+            </div>
+            <div>
+                <a href="/update/{{ post['id'] }}" class="btn btn-warning update-button" >Update</a>
+                <a href="/delete/{{ post['id'] }}" class="btn btn-danger delete-button">Delete</a>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+
+
+ <!-- Blog posts content -->
+
+    <script>
+        // Remove flash messages after 5 seconds
+        setTimeout(function() {
+            var flashMessages = document.querySelectorAll('.flash-message');
+            flashMessages.forEach(function(message) {
+                message.remove();
+            });
+        }, 5000);
+    </script>
+</body>
+</html>
+
+

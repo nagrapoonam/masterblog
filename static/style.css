@@ -1,0 +1,186 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F5F5F5;
+    padding: 20px;
+    color: #333;
+    position: relative;
+}
+
+.img-bg {
+    opacity: 0.6;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+}
+
+a {
+    margin-bottom: 20px;
+}
+
+.post {
+    background-color: #FFF;
+    border: 1px solid #DDD;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    position: relative;
+    opacity: 0.5;
+    color: #000;
+    transition: 1s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.post:hover {
+    opacity: 1;
+    transition: 1s ease;
+}
+
+.post h2 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.post p {
+    margin: 10px 0;
+}
+
+h1 h2 p {
+    position: absolute;
+    top: 50%;
+}
+
+.flash-message {
+    position: relative;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(-100%);
+    animation: slideIn 0.5s ease-in-out forwards;
+}
+
+.flash-message-content {
+    color: #333;
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.delete-button,
+.update-button {
+    margin-top: 10px;
+}
+
+.delete-button {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.update-button {
+    color: #fff;
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.post-content {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.post .update-button,
+.post .delete-button {
+    display: none;
+    top: 50%;
+    right: 0;
+    z-index: 1;
+}
+
+.post:hover .update-button,
+.post:hover .delete-button {
+    display: inline-block;
+}
+
+  /* Styling for the navigation bar */
+  .navbar {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  .navbar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+  }
+
+  .navbar a:hover {
+    background-color: #555;
+  }
+
+  /*--------like button-----*/
+
+  .image-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px;
+  border: none;
+  background-color: #eaeaea;
+  cursor: pointer;
+}
+
+.image-button img {
+  width: 20px; /* Adjust the width and height as per your image requirements */
+  height: 20px;
+  margin-right: 5px;
+}
+
+
+  .navbar-heading {
+    font-weight: bold;
+  }
+
+.like-button {
+      background-color: #f4f4f4;
+      border: none;
+      color: #333;
+      padding: 5px 10px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+img{
+width: 20px; /* Adjust the width and height as per your image requirements */
+  height: 20px;
+  margin-right: 5px;
+}
